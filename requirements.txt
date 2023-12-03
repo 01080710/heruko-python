@@ -170,7 +170,7 @@ python-lsp-server==1.7.4
 python-slugify==8.0.1
 pytz==2023.3.post1
 pywavelets==1.5.0
-pywin32==304
+pywin32==300
 pywin32-ctypes==0.2.2
 pywinpty==2.0.11
 pyzmq==24.0.1
