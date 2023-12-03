@@ -108,8 +108,8 @@ mdurl==0.1.2
 mglearn==0.2.0
 mido==1.3.0
 mistune==3.0.1
-mkl-service==2.4.0
-ml-dtypes==0.2.0
+#mkl-service==2.4.0
+#ml-dtypes==0.2.0
 more-itertools==10.1.0
 multidict==6.0.4
 multitasking==0.0.11
