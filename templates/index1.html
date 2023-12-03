@@ -1,0 +1,163 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Car device</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Triples</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <!-- <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> -->
+            <form class="d-flex" role="search" method="get" action="{% url 'home' %}">
+              {% csrf_token %}
+              <input class="form-control me-2" type="search" name="search_term" placeholder="VIN" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Submit</button>
+            </form>
+            
+          </div>
+        </div>
+      </nav>
+
+    <div class="container mt-4">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col">
+              <div class="card">
+                <img src="https://media.istockphoto.com/id/1418378795/photo/asphalt-and-forest-by-the-sea.webp?b=1&s=170667a&w=0&k=20&c=_KXlBCbVRizkxiLTScNy8fSoC5CrmD1-KKtFgctHTDQ=" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">大鵬灣賽道</h5>
+                  <p class="card-text">每一場比賽都有不同等的刺激感</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="https://media.istockphoto.com/id/1493574434/photo/car-rushes-along-the-highway-at-sunset-low-angle-side-view.webp?b=1&s=170667a&w=0&k=20&c=X34OZS-4XQ10buM6BuE5xQpYuvXMWwOoodvU5NtHzgc=" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">車輪</h5>
+                  <p class="card-text">信不信我把你用在車輪下</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="https://plus.unsplash.com/premium_photo-1661922380380-e214c7130cad?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fGNhcnxlbnwwfHwwfHx8MA%3D%3D" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">倫敦鐵橋</h5>
+                  <p class="card-text">所有的承諾都在橋下被見證</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fGNhcnxlbnwwfHwwfHx8MA%3D%3D" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">不厭亭</h5>
+                  <p class="card-text">眾所皆知此處是悠然自在好處去</p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+      <ul>
+        {% for data in datas %}
+        <li>{{data.ACC主動跟車系統}} : {{data.出廠年月}} | {{data.中文等級}} | {{data.EBS}} | {{data.前座中央防碰撞氣囊}}</li>
+        {% endfor %}
+        <link rel="stylesheet" href = "{% static 'css.style.css' %}">
+      </ul>
+      
+    <footer class="bg-info-subtle py-4">
+        <div class="contain">
+            <p class="mb-0"></p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
