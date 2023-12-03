@@ -10,7 +10,7 @@ altgraph==0.17.3
 anyio==3.7.1
 appdirs==1.4.4
 argon2-cffi==23.1.0
-argon2-cffi-bindings @ file:///C:/ci/argon2-cffi-bindings_1644569876605/work
+#argon2-cffi-bindings @ file:///C:/ci/argon2-cffi-bindings_1644569876605/work
 asgiref==3.6.0
 astroid==2.15.6
 asttokens==2.1.0
@@ -18,7 +18,7 @@ astunparse==1.6.3
 async-generator==1.10
 async-lru==2.0.4
 atomicwrites==1.4.1
-attrs @ file:///C:/b/abs_35n0jusce8/croot/attrs_1695717880170/work
+#attrs @ file:///C:/b/abs_35n0jusce8/croot/attrs_1695717880170/work
 auto-py-to-exe==2.37.0
 autopep8==2.0.2
 Babel==2.12.1
@@ -27,11 +27,11 @@ backports.functools-lru-cache @ file:///tmp/build/80754af9/backports.functools_l
 backports.tempfile @ file:///home/linux1/recipes/ci/backports.tempfile_1610991236607/work
 backports.weakref==1.0.post1
 bcrypt==4.0.1
-beautifulsoup4 @ file:///C:/b/abs_0agyz1wsr4/croot/beautifulsoup4-split_1681493048687/work
+#beautifulsoup4 @ file:///C:/b/abs_0agyz1wsr4/croot/beautifulsoup4-split_1681493048687/work
 binaryornot==0.4.4
 black==23.7.0
 bleach==6.0.0
-boltons @ file:///C:/b/abs_707eo7c09t/croot/boltons_1677628723117/work
+#boltons @ file:///C:/b/abs_707eo7c09t/croot/boltons_1677628723117/work
 bottle==0.12.25
 bottle-websocket==0.2.9
 Bottleneck @ file:///C:/Windows/Temp/abs_3198ca53-903d-42fd-87b4-03e6d03a8381yfwsuve8/croots/recipe/bottleneck_1657175565403/work
