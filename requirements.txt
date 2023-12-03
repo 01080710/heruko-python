@@ -30,7 +30,7 @@ cloudpickle==3.0.0
 clyent==1.2.1
 colorama==0.4.6
 comm==0.1.4
-conda-verify==3.4.1
+conda-verify==23.10.1
 contourpy==1.1.0
 cookiecutter==2.3.0
 debugpy==1.6.7.post1
