@@ -62,8 +62,8 @@ google-pasta==0.2.0
 greenlet==2.0.2
 grpcio==1.59.0
 gunicorn==21.2.0
-gym==0.21.0
-gym-notices==0.0.8
+#gym==0.21.0
+#gym-notices==0.0.8
 h5py==3.10.0
 heroku==0.1.4
 html5lib==1.1
