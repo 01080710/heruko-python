@@ -7,12 +7,6 @@ from django.views import View
 
 
 # Create your views here.
-# def home(request):
-#     data = CombineLexus.objects.all()[50:120]
-    
-#     #data = serializers.serialize("python",Item.objects.all())
-#     return render(request, 'index.html', {"datas": data})
-
 def home(request):
     form = SearchForm(request.GET)
     data = None
