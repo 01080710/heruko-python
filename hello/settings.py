@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-%%+ito3%q3wsm*fo-v*$5)(_64^oy=-ro*n6_#n1_j%xq*8=4p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*","arcane-hamlet-07264-3d785e3618a2.herokuapp.com","127.0.0.1"]
+ALLOWED_HOSTS = ["*","vin-700c4bc9210c.herokuapp.com","127.0.0.1"]
 
 
 # Application definition
@@ -61,7 +61,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-           #BASE_DIR / "templates"
            os.path.join(BASE_DIR, "templates"), 
         ],
         'APP_DIRS': True,
