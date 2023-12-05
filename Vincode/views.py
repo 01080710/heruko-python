@@ -16,8 +16,8 @@ def home(request):
 
         if search_term:
             try:
-                item = CombineLexus.objects.get(ACC主動跟車系統=search_term)
-                data = CombineLexus.objects.filter(ACC主動跟車系統=search_term)
+                item = CombineLexus.objects.filter(VIN=search_term).first()
+                data = CombineLexus.objects.filter(VIN=search_term)
             except CombineLexus.DoesNotExist:
                 error_message = "No data found for the given search term."
                 return render(request, 'index.html', {'form': form, 'error_message': error_message})
