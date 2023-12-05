@@ -12,10 +12,10 @@ def home(request):
     form = SearchForm(request.GET)
     data = None
 
-    if parse(request.META['HTTP_USER_AGENT']).is_mobile:
-        template_name = 'mobile_template.html'
-    else:
-        template_name = 'index.html'
+    # if parse(request.META['HTTP_USER_AGENT']).is_mobile:
+    #     template_name = 'mobile_template.html'
+    # else:
+    #     template_name = 'index.html'
 
     if form.is_valid():
         search_term = form.cleaned_data.get('search_term')
@@ -31,5 +31,5 @@ def home(request):
     if data is None:
         error_message = "Input is incorrect."
 
-    return render(request, template_name, {'form': form, 'datas': data})
+    return render(request, 'index.html', {'form': form, 'datas': data})
 
