@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+#<<<<<<< HEAD
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import MyModel, Item,CombineLexus
@@ -28,7 +28,7 @@ def home(request):
 
     return render(request, 'index.html', {'form': form, 'datas': data})
 
-=======
+#=======
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import MyModel, Item,CombineLexus
@@ -58,4 +58,4 @@ def home(request):
 
     return render(request, 'index.html', {'form': form, 'datas': data})
 
->>>>>>> 2235b36a2ddabfc3e5535dbfaa43b5aabca6f1b9
+#>>>>>>> 2235b36a2ddabfc3e5535dbfaa43b5aabca6f1b9
