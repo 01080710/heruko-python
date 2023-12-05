@@ -27,7 +27,11 @@ SECRET_KEY = 'django-insecure-%%+ito3%q3wsm*fo-v*$5)(_64^oy=-ro*n6_#n1_j%xq*8=4p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ["*","vin-700c4bc9210c.herokuapp.com","127.0.0.1"]
+=======
+ALLOWED_HOSTS = ["*","triples-vincode.com","127.0.0.1"]
+>>>>>>> 2235b36a2ddabfc3e5535dbfaa43b5aabca6f1b9
 
 
 # Application definition
@@ -40,20 +44,23 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles','Vincode'
-]
+    'django.contrib.staticfiles',
+    #'user_agents',
+    'Vincode',]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'user_agents.middleware.UserAgentMiddleware',
 ]
 
+#USER_AGENTS_CACHE = 'default'
 ROOT_URLCONF = 'hello.urls'
 
 import os
