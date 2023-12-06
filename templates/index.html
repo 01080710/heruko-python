@@ -66,8 +66,9 @@
                 <!-- 在電腦版顯示 -->
                 <h5 class="card-title d-none d-md-block">Advanced VIN Code Analysis Technology <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fitting Toyota& Lexus</h5>
                 <!-- 在手機版和中小屏幕顯示 -->
-                <h5 class="card-title d-md-none">Advanced &nbsp;VIN &nbsp;Code &nbsp;Analysis <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Technology &nbsp;Fitting<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toyota & Lexus</h5>
+                <h5 class="card-title d-md-none">Advanced &nbsp;VIN &nbsp;Code &nbsp;Analysis <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Technology &nbsp;Fitting<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toyota & Lexus</h5>
                 <p class="card-text"></p>  
+                
                  <!-- 在電腦版顯示 -->
                   <form class="d-none d-md-flex mt-2" role="search" method="get" action="{% url 'home' %}">
                     {% csrf_token %}
@@ -79,7 +80,7 @@
                   <form class="d-md-none mt-2" role="search" method="get" action="{% url 'home' %}">
                     {% csrf_token %}
                     <div class="d-flex">
-                        <input class="form-control me-2 center-placeholder" type="search" name="search_term" style="width: 200px;" placeholder="VIN CODE" aria-label="Search">
+                        <input class="form-control me-2 center-placeholder" type="search" name="search_term" style="width: 180px;" placeholder="VIN CODE" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Submit</button>
                     </div>
                   </form>
