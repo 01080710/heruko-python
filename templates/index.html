@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -37,21 +38,21 @@
   <body>
     <!--  navbar-dark bg-secondary  深灰-->
     <!-- darkgrey 淺灰 -->
-     <nav class="navbar navbar-expand-lg darkgrey">
+    <nav class="navbar navbar-expand-lg darkgrey">
       <div class="container-fluid justify-content-center">
-        <h1 class="navbar-brand text-white" href="#">三興資訊股份有限公司</h1>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active text-white" href = 'https://www.triples.tw'aria-current="page" href="#">Home</a>
-            </li>
+          <!-- 在電腦版顯示 -->
+          <h1 class="navbar-brand text-white d-none d-md-block">三興資訊股份有限公司</h1>
+          <!-- 在手機版和中小屏幕顯示 -->
+          <h1 class="navbar-brand text-white d-md-none text-center">三興資訊股份有限公司</h1>
+      </div>
+      <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link active text-white" href="https://www.triples.tw" aria-current="page">Home</a>
+              </li>
           </ul>
-        </div>
-    </nav> 
+      </div>
+    </nav>
     
     <br>
      <!--圖片底圖-->
@@ -62,13 +63,26 @@
               <img src="https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8UXVlcnl8ZW58MHx8MHx8fDA%3D" class="figure-img img-fluid rounded"  alt="high Technology from people heart.">
               <div class="card-body d-flex flex-column justify-content-center align-items-center">
                 <!--   &nbsp;表示tab  /  <br>表示換行   -->
-                <h5 class="card-title">Advanced VIN Code Analysis Technology <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fitting TOYOTA & LEXUS</h5>
-                 <p class="card-text"></p>  
-                 <form class="d-flex mt-2" role="search" method="get" action="{% url 'home' %}">
-                  {% csrf_token %}
-                  <input class="form-control me-2 center-placeholder" type="search" name="search_term" style="width: 250px;" placeholder="PLEASE INPUT VIN CODE" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Submit</button>
-                 </form>
+                <!-- 在電腦版顯示 -->
+                <h5 class="card-title d-none d-md-block">Advanced VIN Code Analysis Technology <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fitting Toyota& Lexus</h5>
+                <!-- 在手機版和中小屏幕顯示 -->
+                <h5 class="card-title d-md-none">Advanced &nbsp;VIN &nbsp;Code &nbsp;Analysis <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Technology &nbsp;Fitting<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Toyota & Lexus</h5>
+                <p class="card-text"></p>  
+                 <!-- 在電腦版顯示 -->
+                  <form class="d-none d-md-flex mt-2" role="search" method="get" action="{% url 'home' %}">
+                    {% csrf_token %}
+                    <input class="form-control me-2 center-placeholder" type="search" name="search_term" style="width: 250px;" placeholder="PLEASE INPUT VIN CODE" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Submit</button>
+                  </form>
+
+                  <!-- 在手機版和中小屏幕顯示 -->
+                  <form class="d-md-none mt-2" role="search" method="get" action="{% url 'home' %}">
+                    {% csrf_token %}
+                    <div class="d-flex">
+                        <input class="form-control me-2 center-placeholder" type="search" name="search_term" style="width: 200px;" placeholder="VIN CODE" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Submit</button>
+                    </div>
+                  </form>
                </div>
             </div>
           </div> 
@@ -154,7 +168,6 @@
         <p class="copyright">Copyright © 2023 三興資訊</p>
       </footer>
   </body>
-</div>
 </html>
 
 
