@@ -26,10 +26,10 @@ class CombineLexus(models.Model):
     車身型式 = models.CharField("車身型式",max_length=50, null=True)  
     車重 = models.CharField("車重",max_length=50, null=True)  
     價格_x = models.CharField("價格_x",max_length=50, null=True)  
-    車牌號碼 = models.CharField("車牌號碼",max_length=50, null=True)  
-    價格_y = models.CharField("價格_y",max_length=50, null=True)  
+    車牌號碼 = models.CharField("車牌號碼",max_length=50, null=True) 
     CARMDL = models.CharField("CARMDL",max_length=50, null=True)
-    SFX = models.CharField("SFX",max_length=50, null=True)
+    SFX = models.CharField("SFX",max_length=50, null=True) 
+    價格_y = models.CharField("價格_y",max_length=50, null=True)  
     車身座位 = models.CharField("車身座位",max_length=50, null=True)  
     變速系統 = models.CharField("變速系統",max_length=50, null=True)  
     動力型式 = models.CharField("動力型式",max_length=50, null=True)  
@@ -65,7 +65,7 @@ class CombineLexus(models.Model):
     
     # 使用實際存在的欄位名稱
     class Meta:
-        ordering = ['類型', '車種', 'VIN', '中文等級','出廠年月','排氣量_x','車身型式','車重','價格_x','車牌號碼','價格_y','CARMDL','SFX','車身座位',
+        ordering = ['類型', '車種', 'VIN', '中文等級','出廠年月','排氣量_x','車身型式','車重','價格_x','車牌號碼','CARMDL','SFX','價格_y','車身座位',
                     '變速系統','動力型式','定速巡航','蜂鳴式倒車輔助系統','倒車影像輔助','前方駐車雷達','循跡防滑控制系統','車道偏離警示系統',
                     '車道變換輔助系統','ACC主動跟車系統','車道維持輔助系統','AEB自動緊急煞車系統','電子煞車力分配系統','EBS','雷達碰撞預防系統',
                     '自動停車系統','雙前座正面氣囊','雙前座側面氣囊','前座中央防碰撞氣囊','右前座膝部氣囊','右前座正面氣囊','後座側面氣囊','駕駛座正面氣囊',
