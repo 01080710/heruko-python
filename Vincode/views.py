@@ -4,12 +4,18 @@ from .models import MyModel, Item,CombineLexus
 from django.core import serializers
 from .form import SearchForm
 from django.views import View
+from user_agents import parse
 
 
 # Create your views here.
 def home(request):
     form = SearchForm(request.GET)
     data = None
+
+    # if parse(request.META['HTTP_USER_AGENT']).is_mobile:
+    #     template_name = 'mobile_template.html'
+    # else:
+    #     template_name = 'index.html'
 
     if form.is_valid():
         search_term = form.cleaned_data.get('search_term')
