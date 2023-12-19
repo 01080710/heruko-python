@@ -100,9 +100,12 @@
                     <td class="table-Secondary">VIN</td>
                     <!-- list-unstyled表不帶黑點 -->
                     <td class="table-Secondary list-unstyled">
-                      {% for data in datas %}
-                      <li>{{data.VIN}}</li>
-                    {% endfor %}</td> 
+                      {% if user_input %}
+                        {{ user_input }}
+                      {% else %}
+                        <!-- 如果沒有 user_input，顯示一個預設值或空白 -->
+                        No VIN provided
+                      {% endif %}
                   <!-- 第二行 -->
                   <tr class="table-Secondary">
                     <td class="table-Secondary">廠牌</td>
@@ -126,7 +129,7 @@
                     <td class="table-Secondary">等級</td>
                     <td class="table-Secondary list-unstyled">
                       {% for data in datas %}
-                      <li>{{data.價格_y}}</li>
+                      <li>{{data.CARMDL}}</li>
                     {% endfor %}</td>
                     
                   </tr>
@@ -139,23 +142,7 @@
                     {% endfor %}</td>
                     
                   </tr>
-                  <!-- 第六行 -->
-                  {% comment %} <tr class="table-Secondary">
-=======
-                      <li>{{data.出廠年月}}</li>
-                    {% endfor %}</td>
-                    
-                  </tr>
-                  <!-- 第六行
-                  <tr class="table-Secondary">
-                    <td class="table-Secondary">車牌</td>
-                    <td class="table-Secondary list-unstyled">
-                      {% for data in datas %}
-                      <li>{{data.前座中央防碰撞氣囊}}</li>
-                    {% endfor %}</td>             
-<<<<<<< HEAD
-                    </tr> {% endcomment %}
-                  <!-- 其他行和列 -->
+                  
                 </table>
               </div>
             </div>
