@@ -55,14 +55,9 @@ def home(request):
                 #valid_items = [item for item in items if item.WMI == wmi and item.VDS == vds and item.VIS_min <= int(vis_code) <= item.VIS_max]
 
                 if items.exists():
-                    datas = [items.first]
+                    datas = [items.first()]
                 else:
                     error_message = "VIN does not meet the specified conditions."
-
-                #if items.exists():
-                datas = items
-                #else:
-                  #  error_message = "VIN does not meet the specified conditions."
 
             except CombineLexus.DoesNotExist:
                 error_message = "No data found for the given search term."
