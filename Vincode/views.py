@@ -1,4 +1,3 @@
-#<<<<<<< HEAD
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import MyModel, Item,CombineLexus
@@ -6,28 +5,19 @@ from django.core import serializers
 from .form import SearchForm
 from django.views import View
 from django.db.models import Q
+import re
 
-# Create your views here.
-#def home(request):
-    #form = SearchForm(request.GET)
-    #data = None
-
-    #if form.is_valid():
-      #  search_term = form.cleaned_data.get('search_term')
-
-      #  if search_term:
-         #   try:
-             #   item = CombineLexus.objects.get(VIN=search_term)
-             #   data = CombineLexus.objects.filter(VIN=search_term)
-           # except CombineLexus.DoesNotExist:
-                #error_message = "No data found for the given search term."
-               # return render(request, 'index.html', {'form': form, 'error_message': error_message})
+def extract_numeric_from_string(s):
+    # 使用正則表達式匹配字符串中的數字部分
+    match = re.search(r'\d+', s)
     
-   # if data is None:
-       # error_message = "Input is incorrect."
-
-   # return render(request, 'index.html', {'form': form, 'datas': data})
-
+    if match:
+        # 如果找到匹配，返回數字部分的字符串
+        return match.group()
+    else:
+        # 如果未找到匹配，返回None
+        return None
+    
 
 def home(request):
     form = SearchForm(request.GET)
@@ -37,32 +27,60 @@ def home(request):
 
     if form.is_valid():
         search_term = form.cleaned_data.get('search_term')
-        user_input = search_term  # 將用戶輸入的值保存到 user_input 變數中
+        user_input = search_term  
 
         if search_term and len(search_term) == 17:
-            wmi = search_term[:3]
-            vds = search_term[3:8]
-            valadation = search_term[8:10]
-            vis_code = search_term[10::]  # 取得第11位的數字
+            vis_code = search_term[10]   # 根據條件取得第11或第13位的數字
 
-            try:
-                # 使用 __startswith 進行模糊搜尋
-                items = CombineLexus.objects.filter(
-                    Q(WMI=wmi) & Q(VDS=vds) &  Q(VALADATION=valadation) & Q(VIS_min__lte=int(vis_code)) & Q(VIS_max__gte=int(vis_code))
-                )
+            if vis_code.isdigit():
+                # 第 10 位是數字
+                wmi = search_term[:3]
+                vds = search_term[3:8]
+                validation = search_term[8:10]
+                vis_code1 = search_term[10:]
 
-                # 從搜尋結果中找到符合條件的項目
-                #valid_items = [item for item in items if item.WMI == wmi and item.VDS == vds and item.VIS_min <= int(vis_code) <= item.VIS_max]
+                try:
+                    # 使用 __startswith 進行模糊搜尋
+                    items = CombineLexus.objects.filter(
+                        Q(WMI=wmi) & Q(VDS=vds) & Q(VALADATION=validation) &(
+                            Q(VIS_min__lte=int(vis_code1)) & Q(VIS_max__gt=int(vis_code1))
+                        )
+                    )
+                    
+                    # 從搜尋結果中找到符合條件的項目
+                    if items.exists():
+                        datas = [items.first()]
+                    else:
+                        error_message = "VIN does not meet the specified conditions."
 
-                if items.exists():
-                    datas = [items.first()]
-                else:
-                    error_message = "VIN does not meet the specified conditions."
+                except CombineLexus.DoesNotExist:
+                    error_message = "No data found for the given search term."
+            elif vis_code.isalpha():
+                # 第 10 位是字母
+                wmi = search_term[:3]
+                vds = search_term[3:8]
+                validation = search_term[8:10]
+                validation2 = search_term[10]
+                vis_code1 = search_term[11:]
 
-            except CombineLexus.DoesNotExist:
-                error_message = "No data found for the given search term."
+                try:
+                    # 使用 __startswith 進行模糊搜尋，同時添加虛擬欄位 'numeric_code'
+                    items = CombineLexus.objects.filter(
+                        Q(WMI=wmi) & Q(VDS=vds) & Q(VALADATION=validation) & Q(VIS_min__startswith=str(validation2)) &(
+                            Q(VIS_min_false__lte=int(vis_code1)) & Q(VIS_max_false__gt=int(vis_code1))
+                        )
+                    )
+                        
+                    # 從搜尋結果中找到符合條件的項目
+                    if items.exists():
+                        datas = [items.first()]
+                    else:
+                        error_message = "VIN does not meet the specified conditions."
 
-    if datas is None and error_message is None:
-        error_message = "Input is incorrect."
+                except CombineLexus.DoesNotExist:
+                    error_message = "No data found for the given search term."
+            else:
+                print("Invalid VIN format. Unexpected condition.")
+                error_message = "Invalid VIN format. Unexpected condition."
 
-    return render(request, 'index.html', {'form': form, 'datas': datas,'user_input': user_input})
+    return render(request, 'index.html', {'form': form, 'datas': datas, 'user_input': user_input, 'error_message': error_message})
