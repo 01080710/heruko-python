@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import MyModel, Item,hotai
+from .models import MyModel, Item,CombineLexus
 from django.core import serializers
 from .form import SearchForm
 from django.views import View
@@ -41,15 +41,11 @@ def home(request):
 
                 try:
                     # 使用 __startswith 進行模糊搜尋
-<<<<<<< HEAD
+
                     items = CombineLexus.objects.filter(
                         Q(WMI=wmi) & Q(VDS=vds) & Q(VALADATION=validation) &(
                             Q(VIS_min__lte=int(vis_code1)) & Q(VIS_max__gt=int(vis_code1))
-=======
-                    items = hotai.objects.filter(
-                        Q(WMI=wmi) & Q(VDS=vds) & (
-                            Q(VIS_min__lte=int(vis_code1)) & Q(VIS_max__gte=int(vis_code1))
->>>>>>> 16ecf7644890736520908a9d6f32d848b37ba87d
+
                         )
                     )
                     
@@ -59,35 +55,25 @@ def home(request):
                     else:
                         error_message = "VIN does not meet the specified conditions."
 
-<<<<<<< HEAD
+
                 except CombineLexus.DoesNotExist:
-=======
-                except hotai.DoesNotExist:
->>>>>>> 16ecf7644890736520908a9d6f32d848b37ba87d
+
                     error_message = "No data found for the given search term."
             elif vis_code.isalpha():
                 # 第 10 位是字母
                 wmi = search_term[:3]
                 vds = search_term[3:8]
-<<<<<<< HEAD
                 validation = search_term[8:10]
                 validation2 = search_term[10]
-=======
-                validation = search_term[10]
->>>>>>> 16ecf7644890736520908a9d6f32d848b37ba87d
                 vis_code1 = search_term[11:]
 
                 try:
                     # 使用 __startswith 進行模糊搜尋，同時添加虛擬欄位 'numeric_code'
-<<<<<<< HEAD
+
                     items = CombineLexus.objects.filter(
                         Q(WMI=wmi) & Q(VDS=vds) & Q(VALADATION=validation) & Q(VIS_min__startswith=str(validation2)) &(
                             Q(VIS_min_false__lte=int(vis_code1)) & Q(VIS_max_false__gt=int(vis_code1))
-=======
-                    items = hotai.objects.filter(
-                        Q(WMI=wmi) & Q(VDS=vds) & Q(TOYOTA進口_VALADATION = validation) & (
-                            Q(VIS_min_false__lte=int(vis_code1)) & Q(VIS_max_false__gte=int(vis_code1))
->>>>>>> 16ecf7644890736520908a9d6f32d848b37ba87d
+
                         )
                     )
                         
@@ -96,12 +82,8 @@ def home(request):
                         datas = [items.first()]
                     else:
                         error_message = "VIN does not meet the specified conditions."
-
-<<<<<<< HEAD
                 except CombineLexus.DoesNotExist:
-=======
-                except hotai.DoesNotExist:
->>>>>>> 16ecf7644890736520908a9d6f32d848b37ba87d
+
                     error_message = "No data found for the given search term."
             else:
                 print("Invalid VIN format. Unexpected condition.")
