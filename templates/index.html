@@ -107,8 +107,10 @@
                         No VIN provided
                       {% endif %}
                   </tr>
+                  
 
                   <!-- 第二行 -->
+                  {% if datas and datas.0.類型 %}
                   <tr class="table-Secondary">
                     <td class="table-Secondary">廠牌</td>
                     <td class="table-Secondary list-unstyled">
@@ -116,8 +118,10 @@
                       <li>{{data.類型}}</li>
                     {% endfor %}</td>                     
                   </tr>
+                  {% endif %}
 
                   <!-- 第三行 -->
+                  {% if datas and datas.0.車種 %}
                   <tr class="table-Secondary">
                     <td class="table-Secondary">車種</td>
                     <td class="table-Secondary list-unstyled">
@@ -125,8 +129,10 @@
                       <li>{{data.車種}}</li>
                     {% endfor %}</td>                    
                   </tr>
+                  {% endif %}
 
                   <!-- 第四行 -->
+                  {% if datas and datas.0.中文等級 %}
                   <tr class="table-Secondary">
                     <td class="table-Secondary">中文</td>
                     <td class="table-Secondary list-unstyled">
@@ -134,8 +140,10 @@
                       <li>{{data.中文等級}}</li>
                     {% endfor %}</td>                    
                   </tr>
+                  {% endif %}
 
                   <!-- 第五行 -->
+                  {% if datas and datas.0.CARMDL  %}
                   <tr class="table-Secondary">
                     <td class="table-Secondary">等級</td>
                     <td class="table-Secondary list-unstyled">
@@ -143,15 +151,18 @@
                       <li>{{data.CARMDL}}</li>
                     {% endfor %}</td> 
                   </tr>
+                  {% endif %}
 
                   <!-- 第六行 -->
+                  {% if datas and datas.0.出廠年月 %}
                   <tr class="table-Secondary">
                     <td class="table-Secondary">年份</td>
                     <td class="table-Secondary list-unstyled">
                       {% for data in datas %}
                       <li>{{data.出廠年月|slice:":6"}}</li>
                     {% endfor %}</td>                   
-                  </tr>                 
+                  </tr> 
+                  {% endif %}            
                 </table>
               </div>
             </div>
